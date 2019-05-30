@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="library/three.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
+			var material1 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+
+      var geometry2 = new THREE.BoxGeometry( 1, 1, 1 );
+			var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+
+      var geometry3 = new THREE.BoxGeometry( 1, 1, 1 );
+			var material3 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+
+      var geometry4 = new THREE.BoxGeometry( 1, 1, 1 );
+			var material4 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+
+
+
+			var cube1 = new THREE.Mesh( geometry1, material1 );
+      var cube2 = new THREE.Mesh( geometry2, material2 );
+      var cube3 = new THREE.Mesh( geometry3, material3 );
+      var cube4 = new THREE.Mesh( geometry4, material4 );
+
+      cube1.position.x = 4;
+      cube1.position.y = 0;
+      cube1.position.z = 0;
+
+      cube2.position.x = -4;
+      cube2.position.y = 0;
+      cube2.position.z = 0;
+
+      cube3.position.x = 0;
+      cube3.position.y = 4;
+      cube3.position.z = 0;
+
+      cube4.position.x = 0;
+      cube4.position.y = -4;
+      cube4.position.z = 0;
+
+			scene.add( cube1 );
+      scene.add( cube2 );
+      scene.add( cube3 );
+      scene.add( cube4 );
+
+			camera.position.z = 12;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+        cube1.rotation.x += 0.01;
+				//cube1.rotation.y += 0.01;
+
+        cube2.rotation.x += 0.01;
+				//cube2.rotation.y += 0.01;
+
+        //cube3.rotation.x += 0.01;
+				cube3.rotation.y += 0.01;
+
+        //cube4.rotation.x += 0.01;
+				cube4.rotation.y += 0.01;
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+	</body>
+</html>
